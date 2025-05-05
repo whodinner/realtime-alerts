@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Alert</title>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <div id="alertBox" style="padding:10px; background:#eee; border:1px solid #ccc;">
+    Waiting for alerts...
+  </div>
+
+  <!-- Socket.IO Client Script -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('alert', function(data) {
+      const box = document.getElementById('alertBox');
+      box.innerHTML = data.message;
+      box.style.background = '#ffdddd';
+    });
+  </script>
+</body>
+</html>
